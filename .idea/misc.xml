@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.22916666666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/header_stopwatch.xml" value="0.290625" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/rounded_header.xml" value="0.290625" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/white_button.xml" value="0.290625" />
@@ -17,6 +18,8 @@
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_row.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/onwork_monitoring.xml" value="0.1" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/teknisi_menu.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/on_work.xml" value="0.16822916666666668" />
+        <entry key="app/src/main/res/layout/recyclerview_onwork_monitoring.xml" value="0.2140625" />
       </map>
     </option>
   </component>

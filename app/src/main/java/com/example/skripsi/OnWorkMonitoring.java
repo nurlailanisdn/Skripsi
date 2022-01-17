@@ -82,7 +82,7 @@ public class OnWorkMonitoring extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
     double lat, longt;
-    ArrayList<Monitoring> list;
+    ArrayList<Monitoring> list = new ArrayList<>();
     RecyclerView recyclerView;
     private MonitoringAdapter myAdapter;
     private  RecyclerView.LayoutManager layoutManager;
@@ -130,16 +130,14 @@ public class OnWorkMonitoring extends AppCompatActivity {
         db = FirebaseDatabase.getInstance();
 
         getLocation();
-        readRecyclerView();
 
         //setup recyclerview
         recyclerView=findViewById(R.id.listMonitoringPekerjaan);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list=new ArrayList<>();
-        recyclerView.setAdapter(myAdapter);
         myAdapter = new MonitoringAdapter(list);
-        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.setAdapter(myAdapter);
+
+        readRecyclerView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarOnWork);
         setSupportActionBar(toolbar);
@@ -344,13 +342,12 @@ public class OnWorkMonitoring extends AppCompatActivity {
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Monitoring listMonitoring = dataSnapshot.getValue(Monitoring.class);
                     list.add(listMonitoring);
                     Log.d("Monitoring Success: ", String.valueOf(listMonitoring));
                 }
-                myAdapter.updateList(list);
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
