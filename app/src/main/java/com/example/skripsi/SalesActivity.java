@@ -11,13 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.skripsi.model.InputDataPlg;
 import com.example.skripsi.model.ListOnline;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,8 +36,8 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TeknisiActivity extends AppCompatActivity {
-    @Nullable
+public class SalesActivity extends AppCompatActivity {
+
     @BindView(R.id.cardViewListOnline)
     CardView cViewListOnline;
 
@@ -59,7 +59,7 @@ public class TeknisiActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarListOnline);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("List Online Teknisi");
+        toolbar.setTitle("List Online");
 
         //setup recyclerview
         recyclerView = findViewById(R.id.listOnline);
@@ -104,16 +104,16 @@ public class TeknisiActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                                onlineStatus.onDisconnect().removeValue();//delete child from listOnline
 
-                                ListOnline listOnline = snapshot.getValue(ListOnline.class);
+                            ListOnline listOnline = snapshot.getValue(ListOnline.class);
 
-                                String nama= listOnline.getNamaPanjang();
-                                String nip=listOnline.getNip();
-                                String role= listOnline.getRole();
-                                String phone = listOnline.getNoTelp();
-                                ListOnline listOnlineAkun = new ListOnline (nama, nip, role, lastSeen, phone);
-                                onlineStatus.setValue(listOnlineAkun);
+                            String nama= listOnline.getNamaPanjang();
+                            String nip=listOnline.getNip();
+                            String role= listOnline.getRole();
+                            String phone = listOnline.getNoTelp();
+                            ListOnline listOnlineAkun = new ListOnline (nama, nip, role, lastSeen, phone);
+                            onlineStatus.setValue(listOnlineAkun);
 
-                                Log.d("List Online", nama+""+nip+""+role+""+phone+""+lastSeen);
+                            Log.d("List Online", nama+""+nip+""+role+""+phone+""+lastSeen);
 
 
                         }
@@ -136,14 +136,14 @@ public class TeknisiActivity extends AppCompatActivity {
 
     //untuk recyclerview
     public void readDB(){
-//        Query query= dbRef.child("listOnline").orderByChild("role").equalTo("Teknisi");
+//        Query query= dbRef.child("listOnline").orderByChild("role").equalTo("Sales");
 //        query.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                if (snapshot.exists()) {
 //                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-//                    ListOnline listOnline = dataSnapshot.getValue(ListOnline.class);
-//                    list.add(listOnline);
+//                        ListOnline listOnline = dataSnapshot.getValue(ListOnline.class);
+//                        list.add(listOnline);
 //                    }
 //                    myAdapter.notifyDataSetChanged();
 //                }
@@ -182,7 +182,7 @@ public class TeknisiActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.teknisi_menu, menu);
+        inflater.inflate(R.menu.sales_menu, menu);
         return true;
     }
 
@@ -190,18 +190,14 @@ public class TeknisiActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.onWork_monitoring:
-                startActivity(new Intent(TeknisiActivity.this, OnWorkMonitoring.class));
-                finish();
-                break;
             case R.id.action_logout:
                 onlineStatus.onDisconnect().removeValue();//delete child from listOnline
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(TeknisiActivity.this, LoginActivity.class));
+                startActivity(new Intent(SalesActivity.this, LoginActivity.class));
                 finish();
                 break;
-            case R.id.action_galeri:
-                startActivity(new Intent(TeknisiActivity.this, GaleriFoto.class));
+            case R.id.input_data:
+                startActivity(new Intent(SalesActivity.this, InputDataPlg.class));
                 finish();
                 break;
         }

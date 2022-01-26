@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.22916666666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/header_stopwatch.xml" value="0.290625" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/rounded_edittext.xml" value="0.290625" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/rounded_header.xml" value="0.290625" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/rounded_quest.xml" value="0.290625" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/drawable/white_button.xml" value="0.290625" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/edit_profil.xml" value="0.27447916666666666" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_data_pelanggan.xml" value="0.27447916666666666" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_data_pelanggan_lanjutan.xml" value="0.1" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_pelanggan_page.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/list_daftar_akun.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/list_online.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/login_page.xml" value="0.27447916666666666" />
@@ -16,10 +21,10 @@
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_monitoring.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_onwork_monitoring.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_row.xml" value="0.27447916666666666" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/reset_password.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/onwork_monitoring.xml" value="0.1" />
-        <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/teknisi_menu.xml" value="0.27447916666666666" />
-        <entry key="app/src/main/res/layout/on_work.xml" value="0.16822916666666668" />
-        <entry key="app/src/main/res/layout/recyclerview_onwork_monitoring.xml" value="0.2140625" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/sales_menu.xml" value="0.1" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/teknisi_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
@@ -28,5 +33,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.4" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -36,7 +36,6 @@
         android:layout_marginTop="90dp"
         android:ems="15"
         android:hint="Nama"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />

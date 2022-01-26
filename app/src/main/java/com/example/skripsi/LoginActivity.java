@@ -155,6 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         finish();
                                                         break;
                                                     case "Sales":
+                                                        startActivity(new Intent(LoginActivity.this, SalesActivity.class));
                                                         break;
                                                 }
                                             } else {
