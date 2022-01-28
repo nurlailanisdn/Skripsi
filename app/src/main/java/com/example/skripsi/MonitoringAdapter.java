@@ -1,5 +1,7 @@
 package com.example.skripsi;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +14,13 @@ import com.example.skripsi.model.Monitoring;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MonitoringAdapter extends RecyclerView.Adapter<MonitoringAdapter.MyViewHolder> {
-    List<Monitoring> list = new ArrayList<>();
+    ArrayList<Monitoring> list = new ArrayList<>();
     public MonitoringAdapter(ArrayList<Monitoring> list){
 
         this.list=list;
-    }
-
-    public void updateList(List list){
-        this.list.clear();
-        this.list.addAll(list);
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -38,7 +35,16 @@ public class MonitoringAdapter extends RecyclerView.Adapter<MonitoringAdapter.My
         Monitoring listMonitoring = list.get(position);
         holder.waktuMulai.setText(listMonitoring.getMulaiKerja());
         holder.waktuBerhenti.setText(listMonitoring.getSelesaiKerja());
-        holder.lokasiMonitoring.setText((int) listMonitoring.getLat());
+        holder.lokasiMonitoring.setText(listMonitoring.getLat() +", "+ listMonitoring.getLongt());
+        holder.lokasiMonitoring.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_location_on, 0,0,0);
+        holder.lokasiMonitoring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = String.format(Locale.ENGLISH, "geo:%f,%f", listMonitoring.getLat(), listMonitoring.getLongt());
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

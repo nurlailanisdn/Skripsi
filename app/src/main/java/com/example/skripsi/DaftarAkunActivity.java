@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -153,6 +154,7 @@ public class DaftarAkunActivity extends AppCompatActivity {
                             Log.d("Create User: ","getting Uid "+id);
                             ListDaftarAkun User = new ListDaftarAkun(nip, nama, email, phone, hashPass, role, id);
                             mDatabase.child("Pre-Akun").child(id).setValue(User);
+                            Toast.makeText(DaftarAkunActivity.this,"Pendaftaran akun selesai, silahkan tunggu konfirmasi dari admin", Toast.LENGTH_LONG).show();
                             Intent i = new Intent(DaftarAkunActivity.this, LoginActivity.class);
                             startActivity(i);
                         } else {
