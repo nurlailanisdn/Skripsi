@@ -33,6 +33,7 @@ public class MonitoringAdapter extends RecyclerView.Adapter<MonitoringAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Monitoring listMonitoring = list.get(position);
+        holder.namaTeknisi.setText(listMonitoring.getNamaPanjang());
         holder.waktuMulai.setText(listMonitoring.getMulaiKerja());
         holder.waktuBerhenti.setText(listMonitoring.getSelesaiKerja());
         holder.lokasiMonitoring.setText(listMonitoring.getLat() +", "+ listMonitoring.getLongt());
@@ -53,12 +54,13 @@ public class MonitoringAdapter extends RecyclerView.Adapter<MonitoringAdapter.My
     }
 
     public class MyViewHolder extends  RecyclerView.ViewHolder{
-        TextView waktuMulai,waktuBerhenti, lokasiMonitoring;
+        TextView namaTeknisi, waktuMulai,waktuBerhenti, lokasiMonitoring;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             waktuMulai= itemView.findViewById(R.id.txt_waktumulai_monitoring);
             waktuBerhenti=itemView.findViewById(R.id.txt_waktuberhenti_monitoring);
             lokasiMonitoring= itemView.findViewById(R.id.txt_lokasi_monitoring);
+            namaTeknisi= itemView.findViewById(R.id.txt_nama_teknisi);
         }
     }
 }

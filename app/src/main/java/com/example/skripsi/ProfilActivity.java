@@ -63,8 +63,10 @@ public class ProfilActivity extends FragmentActivity implements OnMapReadyCallba
     TextView roleProfil;
     @BindView(R.id.txt_phoneProfil)
     TextView phoneProfil;
-    @BindView(R.id.txt_jamLastSeenProfil)
-    TextView lastSeenProfil;
+    @BindView(R.id.txt_tanggalProfil)
+    TextView tanggalProfil;
+    @BindView(R.id.txt_jamProfil)
+    TextView jamProfil;
     private SharedPreferences preferences;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
@@ -87,21 +89,15 @@ public class ProfilActivity extends FragmentActivity implements OnMapReadyCallba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.profil_page);
         ButterKnife.bind(this); //Binding ButterKnife dengan activity ini
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().
-                findFragmentById(R.id.mapProfil);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapProfil);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
+        getCurrentLocation();
         readDB();
-//        getCurrentLocation();
-
     }
 
     @Override
@@ -144,7 +140,7 @@ public class ProfilActivity extends FragmentActivity implements OnMapReadyCallba
                         nipProfil.setText(nip);
                         roleProfil.setText(role);
                         phoneProfil.setText(phone);
-                        lastSeenProfil.setText(lastSeen);
+                        jamProfil.setText(lastSeen);
 
                     }
                 }

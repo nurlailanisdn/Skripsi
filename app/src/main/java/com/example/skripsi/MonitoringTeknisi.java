@@ -1,14 +1,18 @@
 package com.example.skripsi;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +29,7 @@ import java.util.Calendar;
 
 public class MonitoringTeknisi extends AppCompatActivity {
     DatabaseReference dbRef;
-    ArrayList<Monitoring> list;
+    ArrayList<Monitoring> list = new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     MonitoringAdapter myAdapter;
@@ -41,16 +45,13 @@ public class MonitoringTeknisi extends AppCompatActivity {
         setContentView(R.layout.monitoring);
 
         //setup recyclerview
-        recyclerView = findViewById(R.id.listMonitoringPekerjaan);
-        recyclerView.setHasFixedSize(true);
+        recyclerView=findViewById(R.id.listMonitoring);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<>();
-        recyclerView.setAdapter(myAdapter);
         myAdapter = new MonitoringAdapter(list);
-        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.setAdapter(myAdapter);
 
         //setup toolbar
-        androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbarMonitoringTeknisi);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarMonitoringTeknisi);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Monitoring Teknisi");
 
@@ -63,17 +64,18 @@ public class MonitoringTeknisi extends AppCompatActivity {
     }
 
     public void readRecyclerView() {
+        db = FirebaseDatabase.getInstance();
         dbRef = db.getReference().child("Monitoring").child(tanggalKerja);
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                list.clear();
+//                list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Monitoring listMonitoring = dataSnapshot.getValue(Monitoring.class);
                     list.add(listMonitoring);
                     Log.d("Monitoring Success: ", String.valueOf(listMonitoring));
                 }
-                myAdapter.updateList(list);
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -81,5 +83,24 @@ public class MonitoringTeknisi extends AppCompatActivity {
                 Log.e("Monitoring error: ", error.getMessage());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.onwork_monitoring, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.back_home:
+                startActivity(new Intent(MonitoringTeknisi.this, TeknisiActivity.class));
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

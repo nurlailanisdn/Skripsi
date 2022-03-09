@@ -4,8 +4,8 @@
         android:id="@+id/edit_profil"
         android:title="Edit Profil" />
     <item
-        android:id="@+id/onWork_monitoring"
-        android:title="On Work Monitoring" />
+        android:id="@+id/monitoringTeknisi"
+        android:title="Monitoring Teknisi" />
     <item
         android:id="@+id/action_galeri"
         android:title="Galeri Foto" />

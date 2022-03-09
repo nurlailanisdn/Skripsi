@@ -133,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                                         if (!task.isSuccessful()) {
                                             Log.e("Firebase", "Error getting data", task.getException());
-                                            Toast.makeText(LoginActivity.this,"Akun belum diaktivasi oleh admin", Toast.LENGTH_SHORT).show();
                                         } else {
                                             String currentRole = String.valueOf(task.getResult().getValue());
                                             Log.d("Role: ", currentRole);
@@ -155,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         finish();
                                                         break;
                                                     case "Sales":
+                                                        startActivity(new Intent(LoginActivity.this, SalesActivity.class));
                                                         break;
                                                 }
                                             } else {

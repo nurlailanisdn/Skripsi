@@ -8,8 +8,14 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<ListOnline> list;
     FirebaseDatabase db;
     FirebaseUser user;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,52 +74,116 @@ public class MainActivity extends AppCompatActivity {
         userListRef = db.getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        writeLastSeen(user);
-        readDatabase();
+        readAndWrite();
         recyclerView.setAdapter(myAdapter);
+        recyclerView.setVisibility(View.VISIBLE);
+        readDB();
     }
 
-    private void writeLastSeen(FirebaseUser user){
-            Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-            String time = format.format(calendar);
-            onlineStatus=db.getReference("listOnline/"+user.getUid()+"/lastSeen");
-            connectedRef= FirebaseDatabase.getInstance().getReference(".info/connected");
-            connectedRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.getValue(Boolean.class)){
-                       onlineStatus.onDisconnect().removeValue();//delete child from listOnline
-                        onlineStatus.setValue(time);
-                        myAdapter.notifyDataSetChanged();
-                    }
-                }
+    private void readAndWrite() {
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        String lastSeen = format.format(currentTime);
+        String id = user.getUid();
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.e ("write LastSeen: ", error.getMessage());
-                }
-            });
-    }
+        preferences = getSharedPreferences("profil", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("id", id);
+        editor.commit();
 
-    private void readDatabase(){
-        DatabaseReference dbRead= db.getReference().child("Akun");
-        dbRead.addValueEventListener(new ValueEventListener() {
+        onlineStatus = db.getReference("listOnline/" + id);
+        connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    ListOnline listOnline = dataSnapshot.getValue(ListOnline.class);
-                    list.add(listOnline);
+                if (snapshot.getValue(Boolean.class)) {
+                    DatabaseReference dbRead = db.getReference().child("Akun").child(id);
+                    dbRead.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                onlineStatus.onDisconnect().removeValue();//delete child from listOnline
 
-                    DatabaseReference dbRef =  db.getReference().child("listOnline");
-                    dbRef.setValue(listOnline);
+                            ListOnline listOnline = snapshot.getValue(ListOnline.class);
+
+                            String nama = listOnline.getNamaPanjang();
+                            String nip = listOnline.getNip();
+                            String role = listOnline.getRole();
+                            String phone = listOnline.getNoTelp();
+                            ListOnline listOnlineAkun = new ListOnline(nama, nip, role, lastSeen, phone);
+                            onlineStatus.setValue(listOnlineAkun);
+
+                            Log.d("List Online", nama + "" + nip + "" + role + "" + phone + "" + lastSeen);
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.e("List Online: ", error.getMessage());
+                        }
+                    });
+                    myAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("List Online: ", error.getMessage());
+                Log.e("list online: ", error.getMessage());
             }
         });
+    }
+
+    public void readDB() {
+        userListRef = db.getReference().child("listOnline");
+        userListRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    ListOnline listOnline = dataSnapshot.getValue(ListOnline.class);
+                    list.add(listOnline);
+                }
+
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("List Online:", error.getMessage());
+            }
+        });
+    }
+
+    public void onStop() {
+        super.onStop();
+        onlineStatus.onDisconnect().removeValue();//delete child from listOnline
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.atasan_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.monitoringTeknisi:
+                startActivity(new Intent(MainActivity.this, MonitoringTeknisi.class));
+                finish();
+                break;
+            case R.id.action_logout:
+                onlineStatus.onDisconnect().removeValue();//delete child from listOnline
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+                break;
+            case R.id.action_galeri:
+                startActivity(new Intent(MainActivity.this, GaleriFoto.class));
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

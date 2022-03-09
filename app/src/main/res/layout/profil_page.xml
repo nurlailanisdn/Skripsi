@@ -9,9 +9,6 @@
         android:id="@+id/toolbarProfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -22,17 +19,17 @@
         app:titleTextColor="@color/white" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarProfil">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProfil"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -42,10 +39,11 @@
                 android:id="@+id/txt_namaProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:hint="Nama"
+                android:layout_marginTop="30dp"
+                android:hint="Nama Pegawai"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:hint="NIP"
-                android:textSize="16sp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_namaProfil" />
@@ -67,11 +65,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:gravity="center"
+                android:layout_marginEnd="172dp"
                 android:hint="Role"
-                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textStyle="italic"
                 app:layout_constraintEnd_toStartOf="@+id/txt_phoneProfil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nipProfil" />
@@ -80,71 +76,60 @@
                 android:id="@+id/txt_phoneProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="142dp"
-                android:layout_marginLeft="142dp"
                 android:layout_marginTop="5dp"
                 android:hint="Phone"
-                android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txt_roleProfil"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nipProfil" />
 
-
             <TextView
-                android:id="@+id/txt_tambahanProfil"
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:text="Terakhir Diliat :"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="15sp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="Terakhir dilihat:"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txt_jamLastSeenProfil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_roleProfil" />
 
             <TextView
-                android:id="@+id/txt_jamLastSeenProfil"
+                android:id="@+id/txt_tanggalProfil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:foregroundGravity="center"
-                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:hint="Tanggal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/txt_phoneProfil" />
+
+            <TextView
+                android:id="@+id/txt_jamProfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
                 android:hint="Jam"
-                android:inputType="time"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txt_tambahanProfil" />
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/txt_tanggalProfil" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
-
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/mapProfil"-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="400dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/cardView4" />-->
 
     <fragment
         android:id="@+id/mapProfil"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView4" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
