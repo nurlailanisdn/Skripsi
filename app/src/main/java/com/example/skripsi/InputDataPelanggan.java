@@ -88,6 +88,5 @@ public class InputDataPelanggan extends AppCompatActivity {
             editor.commit();
 
             startActivity(new Intent(InputDataPelanggan.this, InputDataPelangganLnjtn.class));
-            finish();
         }
     }

@@ -375,7 +375,6 @@ public class OnWorkMonitoring extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.back_home:
                 startActivity(new Intent(OnWorkMonitoring.this, TeknisiActivity.class));
-                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -1,40 +1,89 @@
 package com.example.skripsi.model;
 
+import android.content.Context;
 import android.net.Uri;
 
-public class ListGaleriFoto {
-    Uri uri;
-    String tanggalGaleri, uploaderGaleri, judulGaleri;
+import java.io.Serializable;
 
-    public Uri getUri() {
-        return uri;
+public class ListGaleriFoto implements Serializable {
+    String uIdUploader, judulFotoKerja, imageURL, namaPanjang, tanggalFotoKerja, deskripsiFotoKerja, namaAtasan, key;
+
+    public ListGaleriFoto() {
+
     }
 
-    public void setUri(Uri uri) {
-        this.uri = uri;
+    public ListGaleriFoto(String tanggalFotoKerja, String namaPanjang, String judulFotoKerja, String imageURL, String deskripsiFotoKerja, String namaAtasan, String key, String uIdUploader) {
+        this.tanggalFotoKerja = tanggalFotoKerja;
+        this.namaPanjang = namaPanjang;
+        this.judulFotoKerja = judulFotoKerja;
+        this.imageURL = imageURL;
+        this.deskripsiFotoKerja=deskripsiFotoKerja;
+        this.namaAtasan=namaAtasan;
+        this.key=key;
+        this.uIdUploader=uIdUploader;
     }
 
-    public String getTanggalGaleri() {
-        return tanggalGaleri;
+    public String getuIdUploader() {
+        return uIdUploader;
     }
 
-    public void setTanggalGaleri(String tanggalGaleri) {
-        this.tanggalGaleri = tanggalGaleri;
+    public void setuIdUploader(String uIdUploader) {
+        this.uIdUploader = uIdUploader;
     }
 
-    public String getUploaderGaleri() {
-        return uploaderGaleri;
+    public String getJudulFotoKerja() {
+        return judulFotoKerja;
     }
 
-    public void setUploaderGaleri(String uploaderGaleri) {
-        this.uploaderGaleri = uploaderGaleri;
+    public void setJudulFotoKerja(String judulFotoKerja) {
+        this.judulFotoKerja = judulFotoKerja;
     }
 
-    public String getJudulGaleri() {
-        return judulGaleri;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setJudulGaleri(String judulGaleri) {
-        this.judulGaleri = judulGaleri;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getNamaPanjang() {
+        return namaPanjang;
+    }
+
+    public void setNamaPanjang(String namaPanjang) {
+        this.namaPanjang = namaPanjang;
+    }
+
+    public String getTanggalFotoKerja() {
+        return tanggalFotoKerja;
+    }
+
+    public void setTanggalFotoKerja(String tanggalFotoKerja) {
+        this.tanggalFotoKerja = tanggalFotoKerja;
+    }
+
+    public String getDeskripsiFotoKerja() {
+        return deskripsiFotoKerja;
+    }
+
+    public void setDeskripsiFotoKerja(String deskripsiFotoKerja) {
+        this.deskripsiFotoKerja = deskripsiFotoKerja;
+    }
+
+    public String getNamaAtasan() {
+        return namaAtasan;
+    }
+
+    public void setNamaAtasan(String namaAtasan) {
+        this.namaAtasan = namaAtasan;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

@@ -33,7 +33,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 dependencies {
     implementation 'com.jakewharton:butterknife:10.1.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation platform('com.google.firebase:firebase-bom:28.3.0')
@@ -53,4 +52,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:16.0.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 }

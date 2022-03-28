@@ -12,9 +12,11 @@
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/add_photo_activity.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/daftar_akun.xml" value="0.1375" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/daftar_akun_lnjtn.xml" value="0.1" />
-        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/edit_profil.xml" value="0.1" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/edit_profil.xml" value="0.2" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/fragment_profil.xml" value="0.25" />
-        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/gallery_photo.xml" value="0.1" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/galeri_foto_atasan.xml" value="0.23567708333333334" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/gallery_photo.xml" value="0.264" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/gallery_photo_atasan.xml" value="0.1" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_data_pelanggan.xml" value="0.25" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_data_pelanggan_lnjtn.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/input_pelanggan_page.xml" value="0.2" />
@@ -23,13 +25,17 @@
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/login_page.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/monitoring.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/on_work.xml" value="0.264" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/photo_detail_activity.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/profil_page.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/profile_page.xml" value="0.264" />
-        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_gallery.xml" value="0.1" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_gallery.xml" value="0.4" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_komentar.xml" value="0.536" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_monitoring.xml" value="0.264" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_onwork_monitoring.xml" value="0.4" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_photo_detail.xml" value="0.536" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recyclerview_row.xml" value="0.27447916666666666" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/recycleview_daftar_akun.xml" value="0.27447916666666666" />
+        <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/reset_password.xml" value="0.25" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/row_gallery.xml" value="0.25" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/layout/upload_photo.xml" value="0.25" />
         <entry key="..\:/Skripsi2022/app/app/src/main/res/menu/atasan_menu.xml" value="0.27447916666666666" />

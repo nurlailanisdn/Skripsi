@@ -4,22 +4,21 @@ import android.graphics.Bitmap;
 
 public class InputData {
     String kodeSales, nomorMobi, namaPelanggan, noTelpPelanggan, noTelpAlt, relasiPelanggan, alamatPelanggan, patokanAlamat, tanggalInstalasi;
-    Bitmap fotoKTP;
+
     public InputData(){
 
     }
 
-    public InputData(String kodeSales, String nomorMobi, String namaPelanggan, String noTelpPelanggan, String noTelpAlt, String relasiPelanggan, String alamatPelanggan, String patokanAlamat, String tanggalInstalasi, Bitmap fotoKTP){
-        this.kodeSales=kodeSales;
-        this.nomorMobi=nomorMobi;
-        this.namaPelanggan=namaPelanggan;
-        this.noTelpPelanggan=noTelpPelanggan;
-        this.noTelpAlt=noTelpAlt;
-        this.relasiPelanggan=relasiPelanggan;
-        this.alamatPelanggan=alamatPelanggan;
-        this.patokanAlamat=patokanAlamat;
-        this.tanggalInstalasi=tanggalInstalasi;
-        this.fotoKTP=fotoKTP;
+    public InputData(String kodeSales, String nomorMobi, String namaPelanggan, String noTelpPelanggan, String noTelpAlt, String relasiPelanggan, String alamatPelanggan, String patokanAlamat, String tanggalInstalasi){
+    this.kodeSales=kodeSales;
+    this.nomorMobi=nomorMobi;
+    this.namaPelanggan=namaPelanggan;
+    this.noTelpPelanggan=noTelpPelanggan;
+    this.noTelpAlt=noTelpAlt;
+    this.relasiPelanggan=relasiPelanggan;
+    this.alamatPelanggan=alamatPelanggan;
+    this.patokanAlamat=patokanAlamat;
+    this.tanggalInstalasi=tanggalInstalasi;
     }
 
     public String getKodeSales() {
@@ -92,13 +91,5 @@ public class InputData {
 
     public void setTanggalInstalasi(String tanggalInstalasi) {
         this.tanggalInstalasi = tanggalInstalasi;
-    }
-
-    public Bitmap getFotoKTP() {
-        return fotoKTP;
-    }
-
-    public void setFotoKTP(Bitmap fotoKTP) {
-        this.fotoKTP = fotoKTP;
     }
 }

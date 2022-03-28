@@ -97,8 +97,7 @@ public class MonitoringTeknisi extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.back_home:
-                startActivity(new Intent(MonitoringTeknisi.this, TeknisiActivity.class));
-                finish();
+                startActivity(new Intent(MonitoringTeknisi.this, TeknisiActivity.class));;
                 break;
         }
         return super.onOptionsItemSelected(item);

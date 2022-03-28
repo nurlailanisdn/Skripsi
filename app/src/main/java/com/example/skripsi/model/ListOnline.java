@@ -1,14 +1,63 @@
 package com.example.skripsi.model;
 
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ListOnline {
-    private String namaPanjang, nip, role, lastSeen, noTelp;
+public class ListOnline implements Serializable {
+    private String namaPanjang, nip, role, lastSeen, noTelp, namaAtasan, tanggalLastSeen;
+    double lat,lng;
 
     public ListOnline(){
 
+    }
+
+    public ListOnline(String namaPanjang, String nip, String role, String lastSeen, String tanggalLastSeen, String noTelp, double lat, double lng) {
+        this.namaPanjang = namaPanjang;
+        this.nip = nip;
+        this.role = role;
+        this.lastSeen = lastSeen;
+        this.tanggalLastSeen=tanggalLastSeen;
+        this.noTelp=noTelp;
+        this.lat=lat;
+        this.lng=lng;
+    }
+
+    public ListOnline(String namaPanjang, String nip, String role, String lastSeen, String namaAtasan, String tanggalLastSeen, String noTelp,double lat,double lng){
+        this.namaPanjang=namaPanjang;
+        this.nip=nip;
+        this.role=role;
+        this.lastSeen=lastSeen;
+        this.namaAtasan=namaAtasan;
+        this.tanggalLastSeen=tanggalLastSeen;
+        this.noTelp=noTelp;
+        this.lat=lat;
+        this.lng=lng;
+    }
+
+    public String getTanggalLastSeen() {
+        return tanggalLastSeen;
+    }
+
+    public void setTanggalLastSeen(String tanggalLastSeen) {
+        this.tanggalLastSeen = tanggalLastSeen;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     public String getNoTelp() {
@@ -16,22 +65,15 @@ public class ListOnline {
     }
 
     public void setNoTelp(String noTelp) {
-        this.noTelp=noTelp;
+        this.noTelp = noTelp;
     }
 
-    public ListOnline(String namaPanjang, String nip, String role, String lastSeen) {
-        this.namaPanjang = namaPanjang;
-        this.nip = nip;
-        this.role = role;
-        this.lastSeen = lastSeen;
+    public String getNamaAtasan() {
+        return namaAtasan;
     }
 
-    public ListOnline(String namaPanjang, String nip, String role,String lastSeen, String noTelp){
-        this.namaPanjang=namaPanjang;
-        this.nip=nip;
-        this.role=role;
-        this.lastSeen=lastSeen;
-        this.noTelp=noTelp;
+    public void setNamaAtasan(String namaAtasan) {
+        this.namaAtasan = namaAtasan;
     }
 
     public String getNamaPanjang() {

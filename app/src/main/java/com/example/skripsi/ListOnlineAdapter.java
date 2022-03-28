@@ -15,15 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.skripsi.model.ListOnline;
 import com.example.skripsi.model.ListPermintaanAkun;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListOnlineAdapter extends RecyclerView.Adapter<ListOnlineAdapter.MyViewHolder> {
     List<ListOnline> list =  new ArrayList<>();
+    Context context;
 
 
-    public ListOnlineAdapter(ArrayList<ListOnline> list) {
+    public ListOnlineAdapter(Context context,ArrayList<ListOnline> list) {
+
         this.list = list;
+        this.context=context;
     }
 
     @NonNull
@@ -40,6 +44,14 @@ public class ListOnlineAdapter extends RecyclerView.Adapter<ListOnlineAdapter.My
         holder.txt_nip.setText(listOnline.getNip());
         holder.txt_role.setText(listOnline.getRole());
         holder.txt_lastSeen.setText(listOnline.getLastSeen());
+        holder.cardViewListOnline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, ProfilActivity.class);
+                i.putExtra("profilData", listOnline);
+                context.startActivity(i);
+            }
+            });
     }
 
     @Override
@@ -58,14 +70,6 @@ public class ListOnlineAdapter extends RecyclerView.Adapter<ListOnlineAdapter.My
             txt_role = itemView.findViewById(R.id.txtRoleAkun);
             txt_lastSeen = itemView.findViewById(R.id.txtLastSeenAkun);
             cardViewListOnline=itemView.findViewById(R.id.cardViewListOnline);
-            cardViewListOnline.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Context context = view.getContext();
-                    Intent i =  new Intent(context, ProfilActivity.class);
-                    context.startActivity(i);
-                }
-            });
         }
     }
 }

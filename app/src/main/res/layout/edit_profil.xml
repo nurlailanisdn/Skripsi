@@ -36,7 +36,6 @@
         android:layout_marginTop="90dp"
         android:ems="15"
         android:hint="Nama"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -64,28 +63,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_editNIP" />
 
-    <EditText
-        android:id="@+id/txt_editPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_editPhone" />
-
     <Button
         android:id="@+id/btn_editProfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="Simpan"
+        android:layout_marginTop="20dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_editPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
